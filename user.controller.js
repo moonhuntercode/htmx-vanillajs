@@ -1,6 +1,6 @@
 const User = {
   get(req, res) {
-    res.status(200).send("hi a moon");
+    res.status(200).render("index", {});
   },
   list(req, res) {
     res.status(200).send("hi all moon");

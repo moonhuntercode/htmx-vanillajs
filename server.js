@@ -8,12 +8,7 @@ import user from "./user.controller.js";
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// serving static files
-app.use(express.static("public"));
-
-// start the server
-if (import.meta.env.PROD) app.listen(3000);
-
+// ROUTES
 app.get("/api", user.get);
 app.post("/", user.create);
 app.get("/:id", user.list);
@@ -21,5 +16,14 @@ app.put("/:id", user.update);
 app.patch("/:id", user.update);
 app.delete("/:id", user.destroy);
 app.get("*", user.anyUnknown);
+
+// serving static files
+// app.use(express.static("public"));
+
+// habilitando Pug
+app.set("view engine", "pug");
+
+// start the server
+if (import.meta.env.PROD) app.listen(3000);
 
 export const viteNodeApp = app;
